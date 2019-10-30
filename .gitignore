@@ -1,4 +1,4 @@
-insta_poster_env/
-insta_poster_env_windows/
+api/insta_poster_env/
+api/insta_poster_env_windows/
 **/__pycache__/**
-.vscode/
+**/.vscode/
