@@ -1,8 +1,6 @@
 from PIL import Image, ImageDraw, ImageOps
 from time import time
 
-print("shitmed")
-
 class Generator:
   def __init__(self, body_text, footer_text):
     self.body_text = body_text
