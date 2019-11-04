@@ -1,4 +1,9 @@
 api/insta_poster_env/
 api/insta_poster_env_windows/
+api/app.py
+
+firebase_management/firebase_management_env/
+firebase_management/app.py
+
 **/__pycache__/**
 **/.vscode/
