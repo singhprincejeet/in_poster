@@ -24,8 +24,8 @@ from instapy_cli import client
 
 class MainController:
     def post(self, request):
+        image_src = self.generate_image(request)
         request_json = request.get_json()
-        image_src = self.generate_image(request_json)
         username, password = self.get_user_info(request_json)
         print("Posting for: " + str(username))
         with client(username, password) as cli:
@@ -33,7 +33,8 @@ class MainController:
         return 'Image posted!'
 
 
-    def generate_image(self, request_json):
+    def generate_image(self, request):
+        request_json = request.get_json()
         body_text = self.get_text_from_request(request_json['body'])
         footer_text = self.get_text_from_request(request_json['footer'])
 

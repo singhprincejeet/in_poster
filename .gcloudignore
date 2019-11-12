@@ -1,5 +1,6 @@
 api/insta_poster_env/
 api/insta_poster_env_windows/
+api/tmp/
 api/app.py
 
 firebase_management/firebase_management_env/

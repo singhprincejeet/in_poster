@@ -1,5 +1,6 @@
 api/insta_poster_env/
 api/insta_poster_env_windows/
+api/tmp/
 
 firebase_management/firebase_management_env/
 firebase_management/assets/keys
