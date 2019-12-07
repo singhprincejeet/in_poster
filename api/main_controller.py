@@ -4,11 +4,6 @@ from components.text import Text
 from instapy_cli import client
 
 # {
-#     "caption": "we did it",
-#     "user_info": {
-# 			"username": "poetjeet",
-# 			"password": "mein ni dasna"
-# 		},
 #     "body": {
 # 			"text": "I will take stars from sky\nPut them on her dress\nTake Saturn rings\nAnd crown her a princess",
 #         "size": "36",
@@ -23,15 +18,6 @@ from instapy_cli import client
 # }
 
 class MainController:
-    def post(self, request):
-        image_src = self.generate_image(request)
-        request_json = request.get_json()
-        username, password = self.get_user_info(request_json)
-        print("Posting for: " + str(username))
-        with client(username, password) as cli:
-            cli.upload(image_src, request_json['caption'])
-        return 'Image posted!'
-
 
     def generate_image(self, request):
         request_json = request.get_json()
@@ -49,10 +35,3 @@ class MainController:
             color=int(text_json['color'])
         )
         return Text(text_json['text'], text_style)
-
-
-    def get_user_info(self, request_json):
-        user_info = request_json['user_info']
-        username = user_info['username']
-        password = user_info['password']
-        return username, password
