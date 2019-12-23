@@ -2,16 +2,18 @@ from PIL import Image, ImageDraw, ImageOps
 from time import time
 
 class Generator:
-  def __init__(self, body_text, footer_text):
+  DEFAULT_BACKGROUND_SIZE = 600
+
+  def __init__(self, body_text, footer_text, image):
     self.body_text = body_text
     self.footer_text = footer_text
+    self.background_image = self.create_background_image(image)
+
 
   def generate(self):
-    background_image = Image.new('RGB', (self.background_size(), self.background_size()), color = 'white')
-    border_image = self.generate_border_image()
-    self.paste_image(background_image, border_image)
+    self.draw()
     image_src = '/tmp/output_{0}.png'.format(int(time()*1000))
-    background_image.save(image_src)
+    self.background_image.save(image_src)
     return image_src
 
 
@@ -20,12 +22,16 @@ class Generator:
     background_image.paste(border_image, (offset, offset))
 
 
-  def generate_border_image(self):
-    image = Image.new('RGB', (self.border_size(), self.border_size()), color = 'white')
-    canvas = ImageDraw.Draw(image)
+  def create_background_image(self, image):
+    if image is None:
+      return Image.new('RGB', (self.DEFAULT_BACKGROUND_SIZE, self.DEFAULT_BACKGROUND_SIZE), color = 'white')
+    return image
+
+
+  def draw(self):
+    canvas = ImageDraw.Draw(self.background_image)
     self.add_text(canvas, self.body_text, ("center", "center"))
     self.add_text(canvas, self.footer_text, ("center", "bottom"))
-    return image
 
 
   def add_text(self, canvas, text, position):
@@ -64,7 +70,7 @@ class Generator:
 
 
   def background_size(self):
-    return 600
+    return self.background_image.size[0]
 
   def border_size(self):
-    return 550
+    return self.background_size() - 10
