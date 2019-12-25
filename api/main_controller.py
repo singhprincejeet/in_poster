@@ -39,9 +39,9 @@ class MainController:
 
   def get_text_from_request(self, text_json):
     text_style = TextStyle(
-    size=int(text_json['size']),
+      size=int(text_json['size']),
       align=text_json['align'],
-      color=int(text_json['color'])
+      color=text_json['color']
     )
     return Text(text_json['text'], text_style)
 
