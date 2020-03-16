@@ -3,6 +3,8 @@ class Text:
         self.value = value
         self.text_style = text_style
 
+    def draw(self, canvas, position):
+        self.text_style.draw(canvas, self.value, position)
 
     def get_font(self):
         return self.text_style.get_font()

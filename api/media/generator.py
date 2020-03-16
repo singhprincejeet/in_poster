@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw, ImageOps
+from PIL import Image, ImageDraw
 from time import time
 
 class Generator:
@@ -30,8 +30,11 @@ class Generator:
 
   def draw(self):
     canvas = ImageDraw.Draw(self.background_image)
-    self.add_text(canvas, self.body_text, ("center", "center"))
-    self.add_text(canvas, self.footer_text, ("center", "bottom"))
+    self.body_text.draw(canvas, ("center", "center"))
+    self.footer_text.draw(canvas, ("center", "bottom"))
+    
+    # self.add_text(canvas, self.body_text, ("center", "center"))
+    # self.add_text(canvas, self.footer_text, ("center", "bottom"))
 
 
   def add_text(self, canvas, text, position):
