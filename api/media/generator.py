@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw, ImageOps
+from PIL import Image, ImageDraw
 from time import time
 
 class Generator:
@@ -15,11 +15,6 @@ class Generator:
     image_src = '/tmp/output_{0}.png'.format(int(time()*1000))
     self.background_image.save(image_src)
     return image_src
-
-
-  def paste_image(self, background_image, border_image):
-    offset = (self.background_size() - self.border_size()-1)//2
-    background_image.paste(border_image, (offset, offset))
 
 
   def create_background_image(self, image):
