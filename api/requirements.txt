@@ -5,7 +5,7 @@ chardet==3.0.4
 Click==7.0
 decorator==4.0.11
 filetype==1.0.5
-Flask==1.1.1
+Flask==2.3.2
 gcp-functions-emulator==0.1.8
 google-api-core==1.14.3
 google-auth==1.6.3
